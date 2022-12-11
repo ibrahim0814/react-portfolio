@@ -11,7 +11,7 @@ const Hero = (props: Props) => {
   const [text, count] = useTypewriter({
     loop: true,
     delaySpeed: 2000,
-    words: ["Software Engineer", "Web Developer", "Desginer"],
+    words: ["Software Engineer", "Web Developer", "Designer"],
   });
   return (
     <div className="flex h-screen flex-col items-center justify-center space-y-8 overflow-hidden text-center">
