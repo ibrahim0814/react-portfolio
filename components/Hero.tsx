@@ -4,6 +4,7 @@ import { useTypewriter, Cursor } from "react-simple-typewriter";
 import BackgroundCircles from "./BackgroundCircles";
 import Image from "next/image";
 import headshot from "../public/headshot.jpg";
+import Link from "next/link";
 
 type Props = {};
 
@@ -23,13 +24,30 @@ const Hero = (props: Props) => {
         width={headshot.width}
         alt={"Ibrahim Ali's Headshot"}
       />
-      <div>
-        <h1 className="text-4xl font-semibold  text-gray-400">Ibrahim Ali</h1>
+      <div className="z-20">
+        <h1 className="text-4xl font-semibold text-gray-400">Ibrahim Ali</h1>
 
         <h1 className="lg:4xl p-3 text-3xl">
           <span>{text}</span>
           <Cursor cursorColor="#F7ab0a" />
         </h1>
+
+        <div className="pt-5">
+          <Link href={"#about"}>
+            <button className="heroButton">About</button>
+          </Link>
+          <Link href={"#experience"}>
+            <button className="heroButton">Experience</button>
+          </Link>
+
+          <Link href={"#skills"}>
+            <button className="heroButton">Skills</button>
+          </Link>
+
+          <Link href={"#projects"}>
+            <button className="heroButton">Projects</button>
+          </Link>
+        </div>
       </div>
     </div>
   );

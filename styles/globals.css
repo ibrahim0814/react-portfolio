@@ -28,3 +28,9 @@ a {
     background: rgb(36, 36, 36);
   }
 }
+
+@layer components {
+  .heroButton {
+    @apply mt-3 rounded-full border border-[#242424] px-6 py-1 text-sm uppercase tracking-widest text-gray-500 transition-all hover:border-[#fff] hover:text-white;
+  }
+}
