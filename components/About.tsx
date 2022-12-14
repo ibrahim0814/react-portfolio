@@ -12,21 +12,7 @@ const About = (props: Props) => {
         About me
       </h3>
 
-      <motion.div
-        initial={{
-          opacity: 0,
-          x: -200,
-        }}
-        whileInView={{
-          opacity: 1,
-          x: 0,
-        }}
-        transition={{
-          duration: 1.5,
-        }}
-        // Don't want it to repeat, that's why we use once
-        viewport={{ once: true }}
-      >
+      <div>
         <Image
           src={Headshot2.src}
           width={Headshot2.width}
@@ -37,7 +23,7 @@ const About = (props: Props) => {
           className="-mb-20 h-56 w-56 rounded-full object-cover lg:h-[500px]  lg:w-[400px] lg:flex-shrink-0 lg:rounded-lg "
           alt="Ibrahim Ali's Headshot"
         />
-      </motion.div>
+      </div>
 
       <div className="space-y-10 px-0 text-center md:px-10 lg:text-left">
         <h4 className=" text-2xl font-semibold uppercase tracking-[2px] text-gray-400">
