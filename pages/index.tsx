@@ -10,7 +10,7 @@ export default function Home() {
         <title>{`Ibrahim Ali`}</title>
       </Head>
 
-      <Header />
+      {/* <Header /> */}
       {/* Hero */}
       <section id="hero" className="snap-center">
         <Hero />

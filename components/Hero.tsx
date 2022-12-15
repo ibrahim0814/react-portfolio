@@ -5,6 +5,7 @@ import BackgroundCircles from "./BackgroundCircles";
 import Image from "next/image";
 import headshot from "../public/headshot.jpg";
 import Link from "next/link";
+import { SocialIcon } from "react-social-icons";
 
 type Props = {};
 
@@ -15,7 +16,7 @@ const Hero = (props: Props) => {
     words: ["Software Engineer", "Web Developer", "Designer"],
   });
   return (
-    <div className="flex h-screen flex-col items-center justify-center space-y-8 overflow-hidden text-center">
+    <div className="mt-8 flex h-screen flex-col items-center justify-center overflow-hidden text-center">
       <BackgroundCircles />
       <Image
         className="mx-auto h-32 w-32 rounded-full object-cover"
@@ -25,29 +26,41 @@ const Hero = (props: Props) => {
         alt={"Ibrahim Ali's Headshot"}
       />
       <div className="z-20">
-        <h1 className="text-4xl font-semibold text-gray-400">Ibrahim Ali</h1>
+        <h1 className="mt-8 text-4xl font-semibold text-gray-400">
+          Ibrahim Ali
+        </h1>
 
         <h1 className="lg:4xl p-3 text-3xl">
           <span>{text}</span>
           <Cursor cursorColor="#F7ab0a" />
         </h1>
+      </div>
+      <div className=" flex flex-row items-center">
+        {/* Social Icons */}
 
-        <div className="pt-5">
-          <Link href={"#about"}>
-            <button className="heroButton">About</button>
-          </Link>
-          <Link href={"#experience"}>
-            <button className="heroButton">Experience</button>
-          </Link>
+        <SocialIcon
+          url="https://www.linkedin.com/in/ibrahimamanali/"
+          fgColor="gray"
+          bgColor="transparent"
+        />
 
-          <Link href={"#skills"}>
-            <button className="heroButton">Skills</button>
-          </Link>
+        <SocialIcon
+          url="https://www.github.com/ibrahim0814/"
+          fgColor="gray"
+          bgColor="transparent"
+        />
 
-          <Link href={"#projects"}>
-            <button className="heroButton">Projects</button>
-          </Link>
-        </div>
+        <SocialIcon
+          url="https://www.twitter.com/ibrahim_0814/"
+          fgColor="gray"
+          bgColor="transparent"
+        />
+        <SocialIcon
+          url="mailto:ibrhaim.0814@gmail.com"
+          network="email"
+          fgColor="gray"
+          bgColor="transparent"
+        />
       </div>
     </div>
   );
