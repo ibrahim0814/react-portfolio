@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="z-0 snap-y snap-mandatory">
       <Head>
-        <title>{`Ibrahim Ali`}</title>
+        <title>{`Ibrahim Darugar`}</title>
       </Head>
 
       {/* <Header /> */}
