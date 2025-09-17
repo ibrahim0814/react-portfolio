@@ -30,7 +30,7 @@ const About = (props: Props) => {
           My Background
         </h4>
         <p className="text-base">
-          {`Hi, I'm Ibrahim! I'm a software engineer based in San Diego, California. I'm passionate about building web applications and crafting great user experiences. I've worked professionally in the industry for two years, currently building applications and tools for networking technologies at Microsoft. When I'm not coding, I like reading, listening to podcasts, and everything basketball.`}
+          {`Hi, I'm Ibrahim! I'm a software engineer based in San Francisco, California. I'm passionate about building web applications and crafting great user experiences. I've worked professionally in the industry for two years, currently building applications and tools for networking technologies at Microsoft. When I'm not coding, I like reading, listening to podcasts, and everything basketball.`}
         </p>
       </div>
     </div>
