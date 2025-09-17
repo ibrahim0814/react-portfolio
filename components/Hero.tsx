@@ -27,7 +27,7 @@ const Hero = (props: Props) => {
       />
       <div className="z-20">
         <h1 className="mt-8 text-4xl font-semibold text-gray-400">
-          Ibrahim Darugar
+          Ibrahim Ali
         </h1>
 
         <h1 className="lg:4xl p-3 text-3xl">
