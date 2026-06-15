@@ -15,7 +15,7 @@ export type Post = {
 
 const posts: Post[] = [
   {
-    slug: "real-moats-software-company",
+    slug: "moats",
     title: "What are the real moats if you're running a software company?",
     date: "2026-06-14",
     excerpt:
