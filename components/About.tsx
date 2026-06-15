@@ -30,7 +30,7 @@ const About = (props: Props) => {
           My Background
         </h4>
         <p className="text-base">
-          {`Hi, I'm Ibrahim! I'm a software engineer based in San Francisco, California, currently at Bluenote AI, a company building AI for the life sciences industry, where I work on AI-powered products and the infrastructure behind them. Before Bluenote, I worked as a software engineer at Microsoft and at Codecov, where I released their first GitHub Action, now adopted in over 300k repositories. I studied Computer Science and Engineering Management at Vanderbilt University (Class of 2020). When I'm not coding, I like reading, listening to podcasts, and everything basketball.`}
+          {`Hi, I'm Ibrahim! I'm a software engineer based in San Francisco, California. I'm currently at Bluenote AI, a company building AI for the life sciences industry, where I work on AI-powered products and the infrastructure behind them. Before Bluenote, I worked as a software engineer at Microsoft and at Codecov, where I released their first GitHub Action, now adopted in over 300k repositories. I studied Computer Science and Engineering Management at Vanderbilt University (Class of 2020). When I'm not coding, I like reading, listening to podcasts, and everything basketball.`}
         </p>
       </div>
     </div>
