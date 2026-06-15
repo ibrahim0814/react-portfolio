@@ -10,34 +10,36 @@ type Props = {};
 // keeps a higher floor so the concentric look always holds; the yellow ring is
 // the brightest accent.
 //
-// Sizes are responsive: smaller on phones (so the larger rings don't overflow
-// the top of a short mobile viewport once browser chrome is accounted for) and
-// full size from the `sm` breakpoint up.
+// Sizes are responsive: on phones they scale with the viewport width (vw) so
+// the circles fill the screen and grow on larger phones, while staying clear of
+// the top on short viewports (portrait height always exceeds width, so a
+// width-relative ring fits vertically). From the `sm` breakpoint up they switch
+// to the original fixed pixel sizes.
 const rings = [
   {
     key: "r1",
-    sizeClass: "h-[250px] w-[250px] sm:h-[300px] sm:w-[300px]",
+    sizeClass: "h-[72vw] w-[72vw] sm:h-[300px] sm:w-[300px]",
     color: "#333333",
     duration: 2,
     opacity: [0.3, 1],
   },
   {
     key: "r2",
-    sizeClass: "h-[370px] w-[370px] sm:h-[450px] sm:w-[450px]",
+    sizeClass: "h-[102vw] w-[102vw] sm:h-[450px] sm:w-[450px]",
     color: "#333333",
     duration: 3,
     opacity: [0.18, 0.8],
   },
   {
     key: "r3",
-    sizeClass: "h-[490px] w-[490px] sm:h-[650px] sm:w-[650px]",
+    sizeClass: "h-[126vw] w-[126vw] sm:h-[650px] sm:w-[650px]",
     color: "#f7ab0a",
     duration: 4,
     opacity: [0.15, 0.65],
   },
   {
     key: "r4",
-    sizeClass: "h-[540px] w-[540px] sm:h-[800px] sm:w-[800px]",
+    sizeClass: "h-[152vw] w-[152vw] sm:h-[800px] sm:w-[800px]",
     color: "#333333",
     duration: 5,
     opacity: [0.12, 0.6],
