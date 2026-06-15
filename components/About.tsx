@@ -30,10 +30,7 @@ const About = (props: Props) => {
           My Background
         </h4>
         <p className="text-base">
-          {`Hi, I'm Ibrahim! I'm a software engineer based in San Francisco, California, and I love building products end-to-end — from the AI features users touch to the infrastructure that ships them. I'm currently at Bluenote AI, where I build AI-powered document tools: a Microsoft Word add-in shipped to enterprise customers and submitted to the Microsoft AppSource Store, along with our web platform's document quality-review and drafting products. I also build the internal tooling behind it all, including per-PR full-stack preview environments on AWS and Groot, an autonomous Slack-native DevOps agent that triages incidents and proposes fixes.`}
-        </p>
-        <p className="text-base">
-          {`Before Bluenote, I was a software engineer at Microsoft, working on global network management software supporting 100k+ devices across six continents, and at Codecov, where I released their first GitHub Action — now adopted in 300k+ repositories. I studied Computer Science and Engineering Management at Vanderbilt University (Class of 2020). When I'm not coding, I like reading, listening to podcasts, and everything basketball.`}
+          {`Hi, I'm Ibrahim! I'm a software engineer based in San Francisco, California, currently at Bluenote AI, where I build AI-powered products and the infrastructure behind them. Before Bluenote, I worked as a software engineer at Microsoft and at Codecov, where I released their first GitHub Action, now adopted in over 300k repositories. I studied Computer Science and Engineering Management at Vanderbilt University (Class of 2020). When I'm not coding, I like reading, listening to podcasts, and everything basketball.`}
         </p>
       </div>
     </div>
