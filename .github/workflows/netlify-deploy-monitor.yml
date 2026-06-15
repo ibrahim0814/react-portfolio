@@ -1,0 +1,86 @@
+name: Netlify Deploy Monitor
+
+# Watches the Netlify production deploy for each push to main (Netlify itself
+# builds the site via its Git integration; this job polls the Netlify API and
+# reports a green/red check so the deploy result shows up in GitHub).
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      sha:
+        description: "Commit SHA to check (defaults to latest production deploy)"
+        required: false
+
+concurrency:
+  group: netlify-monitor-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    name: Wait for Netlify production deploy
+    runs-on: ubuntu-latest
+    env:
+      NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+      # Site id is not sensitive; override via the NETLIFY_SITE_ID repo variable if it changes.
+      NETLIFY_SITE_ID: ${{ vars.NETLIFY_SITE_ID || '9dc47b50-cc8c-41ba-9acc-a59ea112eb62' }}
+      TARGET_SHA: ${{ github.event.inputs.sha || github.sha }}
+      TIMEOUT_SECONDS: "900"
+      POLL_SECONDS: "15"
+    steps:
+      - name: Poll deploy state
+        run: |
+          set -euo pipefail
+
+          if [ -z "${NETLIFY_AUTH_TOKEN}" ]; then
+            echo "::error::Missing NETLIFY_AUTH_TOKEN secret. Add it under Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+
+          API="https://api.netlify.com/api/v1/sites/${NETLIFY_SITE_ID}/deploys?per_page=30"
+          echo "Watching production deploy for commit ${TARGET_SHA} (site ${NETLIFY_SITE_ID})"
+
+          deadline=$(( $(date +%s) + TIMEOUT_SECONDS ))
+          while [ "$(date +%s)" -lt "$deadline" ]; do
+            resp=$(curl -fsS -H "Authorization: Bearer ${NETLIFY_AUTH_TOKEN}" "${API}") || {
+              echo "API request failed, retrying..."; sleep "${POLL_SECONDS}"; continue;
+            }
+
+            row=$(echo "$resp" | jq -c --arg sha "$TARGET_SHA" \
+              'map(select(.context=="production" and (.commit_ref // "" | startswith($sha[0:7])))) | sort_by(.created_at) | last // empty')
+
+            if [ -z "$row" ] || [ "$row" = "null" ]; then
+              echo "No production deploy found for ${TARGET_SHA} yet..."
+              sleep "${POLL_SECONDS}"; continue
+            fi
+
+            state=$(echo "$row" | jq -r '.state')
+            id=$(echo "$row" | jq -r '.id')
+            url=$(echo "$row" | jq -r '.deploy_ssl_url // .ssl_url')
+            echo "deploy ${id}: state=${state}"
+
+            case "$state" in
+              ready)
+                echo "::notice::Netlify production deploy succeeded — ${url}"
+                echo "### ✅ Netlify deploy ready" >> "$GITHUB_STEP_SUMMARY"
+                echo "- Commit: \`${TARGET_SHA}\`" >> "$GITHUB_STEP_SUMMARY"
+                echo "- URL: ${url}" >> "$GITHUB_STEP_SUMMARY"
+                exit 0 ;;
+              error)
+                msg=$(echo "$row" | jq -r '.error_message // "no error message"')
+                echo "::error::Netlify production deploy FAILED (deploy ${id}): ${msg}"
+                echo "### ❌ Netlify deploy failed" >> "$GITHUB_STEP_SUMMARY"
+                echo "- Commit: \`${TARGET_SHA}\`" >> "$GITHUB_STEP_SUMMARY"
+                echo "- Deploy: ${id}" >> "$GITHUB_STEP_SUMMARY"
+                echo "- Error: ${msg}" >> "$GITHUB_STEP_SUMMARY"
+                echo "- Admin: https://app.netlify.com/sites/monumental-lolly-70c3d3/deploys/${id}" >> "$GITHUB_STEP_SUMMARY"
+                exit 1 ;;
+              *)
+                echo "still in progress (${state})..."
+                sleep "${POLL_SECONDS}" ;;
+            esac
+          done
+
+          echo "::error::Timed out after ${TIMEOUT_SECONDS}s waiting for Netlify deploy of ${TARGET_SHA}"
+          exit 1
