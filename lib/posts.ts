@@ -1,0 +1,86 @@
+// Very basic blog data layer. Posts are authored inline here as structured
+// content blocks so they render cleanly without a markdown dependency.
+
+export type Block =
+  | { type: "p"; text: string }
+  | { type: "ol"; items: { heading: string; body: string }[] };
+
+export type Post = {
+  slug: string;
+  title: string;
+  date: string; // ISO yyyy-mm-dd
+  excerpt: string;
+  content: Block[];
+};
+
+const posts: Post[] = [
+  {
+    slug: "moats",
+    title: "What are the real moats if you're running a software company?",
+    date: "2026-06-14",
+    excerpt:
+      "When anyone can build anything, raw code generation stops being a moat. So what's left? Product, go-to-market, and human relationships.",
+    content: [
+      {
+        type: "p",
+        text: "I've been thinking about this quite a lot recently. The coding models have gotten so good at this point that, as of June 2026, I believe engineering as an applied discipline is never going to be the same again. Btw, I'm writing this after the infamous recall by the US Gov on Fable/Mythos. A sign of the times.",
+      },
+      {
+        type: "p",
+        text: "This leads me to the title of this post. What is the moat in software development in a world in which anyone can build anything? I find myself undulating constantly between shock and awe at the rate at which models are improving and the types of things that I can now hand off to them. In a few months' time, no engineer on the planet will have an edge, in terms of raw code generation, over any frontier model.",
+      },
+      {
+        type: "p",
+        text: "And maybe… this is a good thing? The Silicon Valley lore of the cracked engineer might be cracking. As someone who's been in the software industry for roughly a decade, I never really enjoyed writing the perfect line of code. For me it's always been about the outcomes that software enabled. Faster, cheaper, more efficient, less grunt work. These are outcomes. And in a world increasingly governed by better and better frontier AI coding models, this is what we should all be chasing after anyway.",
+      },
+      {
+        type: "p",
+        text: "In my mind, here are the rough moats around which we need to build software companies:",
+      },
+      {
+        type: "ol",
+        items: [
+          {
+            heading: "Product is now king (hint: it always was)",
+            body: "If you don't have anything worthy of selling, none of what follows actually matters. The good news is that you can quickly validate and test ideas now, at astonishingly high fidelity. You can have an MVP of a well-defined product working end-to-end in a matter of hours, let customers use it, see what they think, and promote or discard it from your backlog right away. Details matter as much as ever. The bar for quality software has always been high, but now that coding ability is no longer the bottleneck, the leverage is in how you communicate with the models. Customer interaction and the ability to extract product insight by talking to normal people is arguably more important than the ability to execute on ideas (execution is cheap now).",
+          },
+          {
+            heading: "GTM motion & sales",
+            body: "After product, this is the thing that differentiates mediocre companies from generational companies. If you don't have a solid GTM strategy, you will absolutely be crushed by your competitors who do. Because guess what? They have access to the same models you do, and their ability to copy-and-paste your products is laughably easy. If you want any chance of survival in the cutthroat AI app-layer landscape, your ability to sell matters more than ever. I would go as far as to say that in 2026, a high-quality sales rep is far more valuable than any engineering hire you can make. The differentiator here will be companies who deeply understand the space they're working in, the various pain points associated with it, and the matching product suite to actually deliver.",
+          },
+          {
+            heading: "Human relationships",
+            body: "This ties into number 2 quite a bit, but the ability to form long-term relationships with clients and build trust is a massive moat. Ultimately at the app layer, what you're really doing is partnering with a company and telling them that “hey, we've got this so you can focus on what you do best.” You're trying to convey a sense of safety in going with your product over the competitors, and that comes when you do the right things: listen, have empathy, and care about the people in your pipeline. It's hard to do this, but when it's genuine, people know.",
+          },
+        ],
+      },
+    ],
+  },
+];
+
+export function getAllPosts(): Post[] {
+  return [...posts].sort((a, b) => (a.date < b.date ? 1 : -1));
+}
+
+export function getPostBySlug(slug: string): Post | undefined {
+  return posts.find((p) => p.slug === slug);
+}
+
+export function formatDate(iso: string): string {
+  const [y, m, d] = iso.split("-").map(Number);
+  const months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  return `${months[m - 1]} ${d}, ${y}`;
+}
