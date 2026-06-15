@@ -46,7 +46,7 @@ const posts: Post[] = [
           },
           {
             heading: "GTM motion & sales",
-            body: "After product, this is the thing that differentiates mediocre companies from generational companies. If you don't have a solid GTM strategy, you will absolutely be crushed by your competitors who do. Because guess what? They have access to the same models you do, and their ability to copy-and-paste your products is laughably easy. If you want any chance of survival in the cutthroat AI app-layer landscape, your ability to sell matters more than ever. I would go as far as to say that in 2026, a high-quality sales rep is far more valuable than any engineering hire you can make. The differentiator here will be companies who deeply understand the space they're working in, the various pain points associated with it, and the matching product suite to actually deliver.",
+            body: "After product, this is the thing that differentiates mediocre companies from generational companies. If you don't have a solid GTM strategy, you will absolutely be crushed by your competitors who do. Because guess what? They have access to the same models you do, and their ability to copy-and-paste your products is laughably easy. If you want any chance of survival in the cutthroat AI app-layer landscape, your ability to sell matters more than ever. I would go as far as to say that in 2026, a high-quality sales rep is far more valuable than any engineering hire you can make. The differentiator here will be companies who deeply understand the space they're working in, the various pain points associated with it, and the matching product suite to actually deliver will win.",
           },
           {
             heading: "Human relationships",
