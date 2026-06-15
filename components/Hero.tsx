@@ -27,7 +27,7 @@ const Hero = (props: Props) => {
       />
       <div className="z-20">
         <h1 className="mt-8 text-4xl font-semibold text-gray-400">
-          Ibrahim Ali
+          Ibrahim Ali (Darugar)
         </h1>
 
         <h1 className="lg:4xl p-3 text-3xl">
@@ -51,12 +51,7 @@ const Hero = (props: Props) => {
         />
 
         <SocialIcon
-          url="https://www.twitter.com/ibrahim_0814/"
-          fgColor="gray"
-          bgColor="transparent"
-        />
-        <SocialIcon
-          url="mailto:ibrhaim.0814@gmail.com"
+          url="mailto:ibrahim.0814@gmail.com"
           network="email"
           fgColor="gray"
           bgColor="transparent"
