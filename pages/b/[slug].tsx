@@ -20,7 +20,7 @@ export default function BlogPost({ post }: Props) {
 
       <main className="mx-auto max-w-2xl px-6 py-20">
         <Link
-          href="/blog"
+          href="/b"
           className="text-sm uppercase tracking-widest text-gray-500 transition-colors hover:text-white"
         >
           ← Blog
@@ -57,7 +57,7 @@ export default function BlogPost({ post }: Props) {
 
         <div className="mt-16 border-t border-[#333333] pt-8">
           <Link
-            href="/blog"
+            href="/b"
             className="text-sm uppercase tracking-widest text-[#f7ab0a] transition-opacity hover:opacity-80"
           >
             ← Back to all posts

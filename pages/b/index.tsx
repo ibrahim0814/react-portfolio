@@ -34,7 +34,7 @@ export default function Blog({ posts }: Props) {
                 </p>
                 <h2 className="mt-2 text-2xl font-semibold">
                   <Link
-                    href={`/blog/${post.slug}`}
+                    href={`/b/${post.slug}`}
                     className="transition-colors hover:text-[#f7ab0a]"
                   >
                     {post.title}
@@ -42,7 +42,7 @@ export default function Blog({ posts }: Props) {
                 </h2>
                 <p className="mt-3 text-base text-gray-400">{post.excerpt}</p>
                 <Link
-                  href={`/blog/${post.slug}`}
+                  href={`/b/${post.slug}`}
                   className="mt-4 inline-block text-sm uppercase tracking-widest text-[#f7ab0a] transition-opacity hover:opacity-80"
                 >
                   Read more →

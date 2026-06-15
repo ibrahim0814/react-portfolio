@@ -13,7 +13,7 @@ export default function Home() {
 
       {/* <Header /> */}
       <Link
-        href="/blog"
+        href="/b"
         className="fixed right-6 top-5 z-30 text-sm uppercase tracking-widest text-gray-500 transition-colors hover:text-white"
       >
         Blog
