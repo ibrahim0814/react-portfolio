@@ -51,12 +51,7 @@ const Hero = (props: Props) => {
         />
 
         <SocialIcon
-          url="https://www.twitter.com/ibrahim_0814/"
-          fgColor="gray"
-          bgColor="transparent"
-        />
-        <SocialIcon
-          url="mailto:ibrhaim.0814@gmail.com"
+          url="mailto:ibrahim.0814@gmail.com"
           network="email"
           fgColor="gray"
           bgColor="transparent"
