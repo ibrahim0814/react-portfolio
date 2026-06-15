@@ -18,21 +18,21 @@ type Props = {};
 const rings = [
   {
     key: "r1",
-    sizeClass: "h-[72vw] w-[72vw] sm:h-[300px] sm:w-[300px]",
+    sizeClass: "h-[82vw] w-[82vw] sm:h-[300px] sm:w-[300px]",
     color: "#333333",
     duration: 2,
     opacity: [0.3, 1],
   },
   {
     key: "r2",
-    sizeClass: "h-[102vw] w-[102vw] sm:h-[450px] sm:w-[450px]",
+    sizeClass: "h-[114vw] w-[114vw] sm:h-[450px] sm:w-[450px]",
     color: "#333333",
     duration: 3,
     opacity: [0.18, 0.8],
   },
   {
     key: "r3",
-    sizeClass: "h-[126vw] w-[126vw] sm:h-[650px] sm:w-[650px]",
+    sizeClass: "h-[140vw] w-[140vw] sm:h-[650px] sm:w-[650px]",
     color: "#f7ab0a",
     duration: 4,
     opacity: [0.15, 0.65],
