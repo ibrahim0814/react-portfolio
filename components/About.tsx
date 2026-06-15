@@ -8,25 +8,24 @@ type Props = {};
 
 const About = (props: Props) => {
   return (
-    <div className="relative mx-auto flex h-screen max-w-7xl flex-col items-center justify-evenly px-10 lg:grid lg:grid-cols-2 ">
-      <h3 className="absolute top-12 text-center text-xl uppercase tracking-[10px] text-gray-500 lg:left-[45%]">
+    <div className="relative mx-auto flex min-h-screen max-w-7xl flex-col items-center justify-center gap-10 px-6 py-28 lg:grid lg:grid-cols-2 lg:justify-evenly lg:gap-0 lg:px-10 lg:py-0">
+      <h3 className="absolute top-10 text-center text-lg uppercase tracking-[8px] text-gray-500 sm:text-xl sm:tracking-[10px] lg:left-[45%]">
         About me
       </h3>
 
-      <div>
+      <div className="flex justify-center">
         <Image
           src={Headshot2.src}
           width={Headshot2.width}
           height={Headshot2.height}
           // object cover means it won't distort the image
-          // flex shrink won't make the image smaller than its original size
-          // -mb-20 means it will be 20px below the bottom of the container
-          className="-mb-20 h-56 w-56 rounded-full object-cover lg:h-[500px]  lg:w-[400px] lg:flex-shrink-0 lg:rounded-lg "
+          // negative bottom margin only applies on large (side-by-side) layout
+          className="h-56 w-56 rounded-full object-cover lg:-mb-20 lg:h-[500px] lg:w-[400px] lg:flex-shrink-0 lg:rounded-lg"
           alt="Ibrahim Ali's Headshot"
         />
       </div>
 
-      <div className="space-y-10 px-0 text-center md:px-10 lg:text-left">
+      <div className="space-y-6 px-0 text-center md:px-10 lg:space-y-10 lg:text-left">
         <h4 className=" text-2xl font-semibold uppercase tracking-[2px] text-gray-400">
           My Background
         </h4>
