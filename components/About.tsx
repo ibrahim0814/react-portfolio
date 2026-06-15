@@ -25,7 +25,7 @@ const About = (props: Props) => {
         />
       </div>
 
-      <div className="space-y-6 px-0 text-center md:px-10 lg:space-y-10 lg:text-left">
+      <div className="space-y-6 px-0 text-left md:px-10 lg:space-y-10">
         <h4 className=" text-2xl font-semibold uppercase tracking-[2px] text-gray-400">
           My Background
         </h4>
