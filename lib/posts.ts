@@ -19,7 +19,7 @@ const posts: Post[] = [
     title: "No one (really) knows anything",
     date: "2026-06-15",
     excerpt:
-      "Jalen Brunson was doubted at every level and won at every level. The lesson: absolute trust in anyone's words but your own will disappoint you. The only path forward is optimism.",
+      "Trust in anyone's words but your own will likely mislead you. The only way forward is with optimism and hope",
     content: [
       {
         type: "p",
