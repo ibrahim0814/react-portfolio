@@ -23,7 +23,7 @@ const posts: Post[] = [
     content: [
       {
         type: "p",
-        text: "The Knicks won the NBA championship in fives games on the back of an unlikely superstar: Jalen Brunson. He's won at the high school level, the college level, and now he's an NBA champion and Finals MVP to boot. But he was doubted at every level he played at even though the results were clear as day. After he got to the NBA (a second round recruit) he scored 41 points in a playoff game to singlehandedly help the Mavericks (his former team) advance in the playoffs. What was his prize for doing so in free agency? A contract worth 50% less than the team who eventually signed him, the Knicks. Even so, the general consensus was that New York seemingly took a “wild” bet on Jalen Brunson by giving him a $100 million contract.",
+        text: "The Knicks won the NBA championship in fives games on the back of an unlikely superstar: Jalen Brunson. He's won at the high school level, the college level, and now he's an NBA champion and Finals MVP to boot. But he was doubted at every level he played at even though the results were clear as day. After he got to the NBA (a second round recruit) he scored 41 points in a playoff game to singlehandedly help the Mavericks advance in the playoffs. What was his prize for doing so in free agency? A contract worth 50% less than the team who eventually signed him, the Knicks. Even so, the general consensus was that New York seemingly took a “wild” bet on Jalen Brunson by giving him a $100 million contract.",
       },
       {
         type: "p",
