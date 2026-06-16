@@ -15,6 +15,27 @@ export type Post = {
 
 const posts: Post[] = [
   {
+    slug: "optimism",
+    title: "No one (really) knows anything",
+    date: "2026-06-15",
+    excerpt:
+      "Jalen Brunson was doubted at every level and won at every level. The lesson: absolute trust in anyone's words but your own will disappoint you. The only path forward is optimism.",
+    content: [
+      {
+        type: "p",
+        text: "The Knicks won the NBA championship in fives games on the back of an unlikely superstar: Jalen Brunson. He's won at the high school level, the college level, and now he's an NBA champion and Finals MVP to boot. But he was doubted at every level he played at even though the results were clear as day. After he got to the NBA (a second round recruit) he scored 41 points in a playoff game to singlehandedly help the Mavericks (his former team) advance in the playoffs. What was his prize for doing so in free agency? A contract worth 50% less than the team who eventually signed him, the Knicks. Even so, the general consensus was that New York seemingly took a “wild” bet on Jalen Brunson by giving him a $100 million contract.",
+      },
+      {
+        type: "p",
+        text: "This all sounds absurd in retrospect, but I think there's a broader lesson in here for me and for everyone else who really wants to do something meaningful with their life: no one really knows what they're talking about. Absolute trust in anyone's words except for your own will likely disappoint you on your quest to achieve something. Jalen Brunson could have listened to all the people who told him he was “too small” or “not the right person to lead a team to a championship” but he decided to put more stock in his work and capabilities.",
+      },
+      {
+        type: "p",
+        text: "The reality is that it's very easy to be pessimistic. Realistically speaking, most of the time these people are right. What is actually very difficult is being optimistic and ignoring the deafening roar of the masses. Most people are not worth listening to. The only real path forward is stepping through life with optimism and hope.",
+      },
+    ],
+  },
+  {
     slug: "moats",
     title: "What are the real moats if you're running a software company?",
     date: "2026-06-14",
