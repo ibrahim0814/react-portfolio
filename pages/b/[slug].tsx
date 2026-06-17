@@ -28,11 +28,14 @@ export default function BlogPost({ post }: Props) {
 
         <article className="mt-10">
           <p className="text-sm uppercase tracking-widest text-gray-500">
-            {formatDate(post.date)} · By Ibrahim Ali
+            {formatDate(post.date)}
           </p>
           <h1 className="mt-3 text-4xl font-semibold leading-tight text-gray-200">
             {post.title}
           </h1>
+          <p className="mt-3 text-sm uppercase tracking-widest text-gray-500">
+            By Ibrahim Ali
+          </p>
 
           <div className="mt-10 space-y-6 text-lg leading-relaxed text-gray-300">
             {post.content.map((block, i) => {
