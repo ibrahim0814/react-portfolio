@@ -57,14 +57,14 @@ function Orbit(W: number, H: number) {
   const cy = H / 2;
   const S = Math.min(W, H); // motifs scale to the shorter side, so they fill
   const sw = 0.0032 * S; //   any aspect ratio (wide banner or square card)
-  const rings = [0.22, 0.35, 0.48].map((f) => f * S);
+  const rings = [0.18, 0.29, 0.4].map((f) => f * S);
   const nodes = [
-    { rF: 0.35, deg: 200, fill: C.clay, sizeF: 0.03 },
-    { rF: 0.35, deg: 325, fill: C.sand, sizeF: 0.022 },
-    { rF: 0.35, deg: 92, fill: C.gold, sizeF: 0.02 },
-    { rF: 0.48, deg: 26, fill: C.rust, sizeF: 0.028 },
-    { rF: 0.48, deg: 158, fill: C.sand, sizeF: 0.02 },
-    { rF: 0.48, deg: 258, fill: C.clay, sizeF: 0.022 },
+    { rF: 0.29, deg: 200, fill: C.clay, sizeF: 0.026 },
+    { rF: 0.29, deg: 325, fill: C.sand, sizeF: 0.019 },
+    { rF: 0.29, deg: 92, fill: C.gold, sizeF: 0.017 },
+    { rF: 0.4, deg: 26, fill: C.rust, sizeF: 0.024 },
+    { rF: 0.4, deg: 158, fill: C.sand, sizeF: 0.017 },
+    { rF: 0.4, deg: 258, fill: C.clay, sizeF: 0.019 },
   ];
   return (
     <g>
@@ -107,9 +107,9 @@ function Orbit(W: number, H: number) {
           />
         );
       })}
-      <circle cx={cx} cy={cy} r={r2(0.118 * S)} fill="none" stroke={C.clay} strokeOpacity={0.4} strokeWidth={sw} />
-      <circle cx={cx} cy={cy} r={r2(0.086 * S)} fill={C.clay} />
-      <circle cx={cx} cy={cy} r={r2(0.038 * S)} fill={C.bg} />
+      <circle cx={cx} cy={cy} r={r2(0.1 * S)} fill="none" stroke={C.clay} strokeOpacity={0.4} strokeWidth={sw} />
+      <circle cx={cx} cy={cy} r={r2(0.074 * S)} fill={C.clay} />
+      <circle cx={cx} cy={cy} r={r2(0.032 * S)} fill={C.bg} />
     </g>
   );
 }
@@ -120,8 +120,8 @@ function Sunrise(W: number, H: number) {
   const cx = W / 2;
   const cy = H / 2;
   const S = Math.min(W, H);
-  const horizon = cy + 0.17 * S;
-  const sunR = 0.18 * S;
+  const horizon = cy + 0.15 * S;
+  const sunR = 0.155 * S;
   const sw = 0.0048 * S;
   return (
     <g>
@@ -135,7 +135,7 @@ function Sunrise(W: number, H: number) {
         strokeWidth={sw}
       />
       {/* arc rays above the sun */}
-      {[0.26, 0.34, 0.42].map((f, i) => (
+      {[0.23, 0.3, 0.37].map((f, i) => (
         <path
           key={`ray${i}`}
           d={arcPath(cx, horizon, f * S, 182, 358)}
@@ -147,8 +147,8 @@ function Sunrise(W: number, H: number) {
       ))}
       {/* short radiating ticks */}
       {[205, 230, 250, 270, 290, 310, 335].map((deg, i) => {
-        const a = polar(cx, horizon, 0.215 * S, deg);
-        const b = polar(cx, horizon, 0.235 * S, deg);
+        const a = polar(cx, horizon, 0.19 * S, deg);
+        const b = polar(cx, horizon, 0.21 * S, deg);
         return (
           <line
             key={`tick${i}`}
@@ -174,24 +174,24 @@ function MoatMotif(W: number, H: number) {
   const cx = W / 2;
   const cy = H / 2;
   const S = Math.min(W, H);
-  const keep = 0.094 * S;
+  const keep = 0.082 * S;
   const sw = 0.0032 * S;
-  const bridge = 0.38 * S;
-  const half = 0.024 * S;
+  const bridge = 0.33 * S;
+  const half = 0.021 * S;
   return (
     <g>
       {/* the moat (single muted cool accent) */}
       <circle
         cx={cx}
         cy={cy}
-        r={r2(0.285 * S)}
+        r={r2(0.25 * S)}
         fill="none"
         stroke={C.water}
         strokeOpacity={0.3}
-        strokeWidth={0.066 * S}
+        strokeWidth={0.058 * S}
       />
       {/* defensive walls */}
-      {[0.21, 0.32, 0.43].map((f, i) => (
+      {[0.185, 0.28, 0.375].map((f, i) => (
         <circle
           key={`wall${i}`}
           cx={cx}
@@ -252,11 +252,11 @@ function Venn(W: number, H: number) {
   const cx = W / 2;
   const cy = H / 2;
   const S = Math.min(W, H);
-  const r = 0.28 * S;
+  const r = 0.24 * S;
   const discs = [
-    { dx: -0.14, dy: 0.08, fill: C.clay },
-    { dx: 0.14, dy: 0.08, fill: C.gold },
-    { dx: 0, dy: -0.11, fill: C.rust },
+    { dx: -0.12, dy: 0.07, fill: C.clay },
+    { dx: 0.12, dy: 0.07, fill: C.gold },
+    { dx: 0, dy: -0.1, fill: C.rust },
   ];
   return (
     <g style={{ mixBlendMode: "multiply" }}>

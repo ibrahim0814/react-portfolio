@@ -47,6 +47,19 @@ register it in `MOTIFS` and the `Motif` type, and add it to `FALLBACK_ORDER`.
 Keep it in the existing palette `C` (clay / cream / sand / gold + the single
 `water` accent) with generous negative space.
 
+### Emblem sizing (breathing room - important)
+
+Size every motif relative to `S = Math.min(W, H)` and center it at
+`(W/2, H/2)`, NOT in absolute pixels. This makes it fill both the wide article
+banner (16/6) and the square share-card tile consistently.
+
+Leave margin so nothing rubs the edge of the tile. The outermost drawn point
+(ring radius + node radius, ray radius, outer wall, disc center + radius, etc.)
+must stay at roughly **<= 0.42 * S** from center. The existing motifs keep their
+outer elements around `0.4 * S` with node/stroke sizes added on top still inside
+`0.45 * S`. If anything visually touches the edge, scale the fractions down -
+the share card should always have clear breathing room around the graphic.
+
 ## 3. Generate the social preview image
 
 The link-preview image lives at `public/og/<slug>.png` (1200x630). Generate it:
