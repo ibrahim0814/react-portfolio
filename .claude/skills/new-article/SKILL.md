@@ -73,7 +73,9 @@ og:description, og:image -> `ogImage(slug)`, twitter:card=summary_large_image,
 etc.) using `SITE_URL` from `lib/site.ts`. You do NOT edit them per post. Just
 confirm:
 
-- `lib/site.ts` `SITE_URL` matches the live domain (`https://ibrahim0814.com`).
+- `lib/site.ts` `SITE_URL` is the canonical host `https://www.ibrahim0814.com`
+  (the apex 301-redirects to www, and scrapers won't follow a redirected
+  og:image - so the www host is required).
 - `public/og/<slug>.png` exists (step 3), so `og:image` resolves once deployed.
 
 Optional sanity check: load `http://localhost:3000/b/<slug>` and confirm the
