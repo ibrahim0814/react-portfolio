@@ -42,8 +42,7 @@ export default function OgCard({
           seed={seed}
           title={title}
           ratio={1}
-          bare
-          grain={false}
+          rounded={28}
           style={{ width: 480 }}
         />
       </div>
