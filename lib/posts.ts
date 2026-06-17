@@ -15,7 +15,7 @@ export type Post = {
 
 const posts: Post[] = [
   {
-    slug: "agent-native-company",
+    slug: "agent-native",
     title: "The agent native company",
     date: "2026-06-16",
     excerpt:
