@@ -43,7 +43,7 @@ export default function BlogPost({ post }: Props) {
                 return <p key={i}>{block.text}</p>;
               }
               return (
-                <ol key={i} className="list-decimal space-y-6 pl-6 marker:text-[#f7ab0a]">
+                <ol key={i} className="list-decimal list-inside space-y-6 marker:text-[#f7ab0a]">
                   {block.items.map((item, j) => (
                     <li key={j}>
                       <span className="font-semibold text-white">
