@@ -34,11 +34,11 @@ const posts: Post[] = [
           },
           {
             heading: "Every vendor",
-            body: "The second part is extending the basic philosophy of Part 1 to every vendor the company uses. Any choice for new vendors should be affected by whether or not they have an API or CLI. Get rid of them if they don't. This isn't always possible with a must-have vendor, but what you're trying to guard against is being invisible to agents. Agents need as much context as possible, so providing them the API keys or any meaningful level of visibility into your stack is an absolute must. Give your agents access to Slack, Sentry, Linear, Google Drive, AWS, GitHub — do it all. This allows agents to make connections and reason across (historically) disparate silos of information across the company. This is a hidden superpower anyone can uncover with some basic plumbing.",
+            body: "The second part is extending the basic philosophy of Part 1 to every vendor the company uses. Any choice for new vendors should be affected by whether or not they have an API or CLI. Get rid of them if they don't. This isn't always possible with a must-have vendor, but what you're trying to guard against is being invisible to agents. Agents need as much context as possible, so providing them the API keys or any meaningful level of visibility into your stack is an absolute must. Give your agents access to Slack, Sentry, Linear, Google Drive, AWS, GitHub. Do it all. This allows agents to make connections and reason across (historically) disparate silos of information across the company. This is a hidden superpower anyone can uncover with some basic plumbing.",
           },
           {
             heading: "Encoded processes",
-            body: "Part 3 is encoding processes so that agents can execute rote tasks end to end. The simplest example of this is on-call rotations and investigations. You probably want information about investigations displayed in a certain way. Great! Write this down in a place where agents have easy access to it. This could be a skill or a document — it doesn't matter. Every layer of a business can be augmented by high-level intelligence and reasoning in some way.",
+            body: "Part 3 is encoding processes so that agents can execute rote tasks end to end. The simplest example of this is on-call rotations and investigations. You probably want information about investigations displayed in a certain way. Great! Write this down in a place where agents have easy access to it. This could be a skill or a document, and it doesn't matter. Every layer of a business can be augmented by high-level intelligence and reasoning in some way.",
           },
           {
             heading: "Repeat",
