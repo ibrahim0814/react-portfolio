@@ -55,14 +55,16 @@ function arcPath(cx: number, cy: number, r: number, a0: number, a1: number) {
 function Orbit(W: number, H: number) {
   const cx = W / 2;
   const cy = H / 2;
-  const rings = [72, 128, 184];
+  const S = Math.min(W, H); // motifs scale to the shorter side, so they fill
+  const sw = 0.0032 * S; //   any aspect ratio (wide banner or square card)
+  const rings = [0.22, 0.35, 0.48].map((f) => f * S);
   const nodes = [
-    { r: 128, deg: 200, fill: C.clay, size: 11 },
-    { r: 128, deg: 325, fill: C.sand, size: 8 },
-    { r: 128, deg: 92, fill: C.gold, size: 7 },
-    { r: 184, deg: 26, fill: C.rust, size: 10 },
-    { r: 184, deg: 158, fill: C.sand, size: 7 },
-    { r: 184, deg: 258, fill: C.clay, size: 8 },
+    { rF: 0.35, deg: 200, fill: C.clay, sizeF: 0.03 },
+    { rF: 0.35, deg: 325, fill: C.sand, sizeF: 0.022 },
+    { rF: 0.35, deg: 92, fill: C.gold, sizeF: 0.02 },
+    { rF: 0.48, deg: 26, fill: C.rust, sizeF: 0.028 },
+    { rF: 0.48, deg: 158, fill: C.sand, sizeF: 0.02 },
+    { rF: 0.48, deg: 258, fill: C.clay, sizeF: 0.022 },
   ];
   return (
     <g>
@@ -71,15 +73,15 @@ function Orbit(W: number, H: number) {
           key={`ring${i}`}
           cx={cx}
           cy={cy}
-          r={r}
+          r={r2(r)}
           fill="none"
           stroke={C.ink}
           strokeOpacity={0.28}
-          strokeWidth={1.25}
+          strokeWidth={sw}
         />
       ))}
       {nodes.slice(0, 3).map((n, i) => {
-        const p = polar(cx, cy, n.r, n.deg);
+        const p = polar(cx, cy, n.rF * S, n.deg);
         return (
           <line
             key={`link${i}`}
@@ -89,25 +91,25 @@ function Orbit(W: number, H: number) {
             y2={r2(p.y)}
             stroke={C.ink}
             strokeOpacity={0.2}
-            strokeWidth={1.1}
+            strokeWidth={sw * 0.9}
           />
         );
       })}
       {nodes.map((n, i) => {
-        const p = polar(cx, cy, n.r, n.deg);
+        const p = polar(cx, cy, n.rF * S, n.deg);
         return (
           <circle
             key={`node${i}`}
             cx={r2(p.x)}
             cy={r2(p.y)}
-            r={n.size}
+            r={r2(n.sizeF * S)}
             fill={n.fill}
           />
         );
       })}
-      <circle cx={cx} cy={cy} r={42} fill="none" stroke={C.clay} strokeOpacity={0.4} strokeWidth={1.25} />
-      <circle cx={cx} cy={cy} r={30} fill={C.clay} />
-      <circle cx={cx} cy={cy} r={13} fill={C.bg} />
+      <circle cx={cx} cy={cy} r={r2(0.118 * S)} fill="none" stroke={C.clay} strokeOpacity={0.4} strokeWidth={sw} />
+      <circle cx={cx} cy={cy} r={r2(0.086 * S)} fill={C.clay} />
+      <circle cx={cx} cy={cy} r={r2(0.038 * S)} fill={C.bg} />
     </g>
   );
 }
@@ -116,34 +118,37 @@ function Orbit(W: number, H: number) {
 // arc rays over a low horizon. Hope, the underdog rising.
 function Sunrise(W: number, H: number) {
   const cx = W / 2;
-  const horizon = H * 0.7;
-  const sunR = 78;
+  const cy = H / 2;
+  const S = Math.min(W, H);
+  const horizon = cy + 0.17 * S;
+  const sunR = 0.18 * S;
+  const sw = 0.0048 * S;
   return (
     <g>
       <line
-        x1={W * 0.1}
-        y1={horizon}
-        x2={W * 0.9}
-        y2={horizon}
+        x1={r2(W * 0.1)}
+        y1={r2(horizon)}
+        x2={r2(W * 0.9)}
+        y2={r2(horizon)}
         stroke={C.ink}
         strokeOpacity={0.4}
-        strokeWidth={1.25}
+        strokeWidth={sw}
       />
       {/* arc rays above the sun */}
-      {[112, 146, 180].map((r, i) => (
+      {[0.26, 0.34, 0.42].map((f, i) => (
         <path
           key={`ray${i}`}
-          d={arcPath(cx, horizon, r, 182, 358)}
+          d={arcPath(cx, horizon, f * S, 182, 358)}
           fill="none"
           stroke={C.clay}
           strokeOpacity={0.5 - i * 0.12}
-          strokeWidth={2}
+          strokeWidth={sw}
         />
       ))}
       {/* short radiating ticks */}
       {[205, 230, 250, 270, 290, 310, 335].map((deg, i) => {
-        const a = polar(cx, horizon, 96, deg);
-        const b = polar(cx, horizon, 104, deg);
+        const a = polar(cx, horizon, 0.215 * S, deg);
+        const b = polar(cx, horizon, 0.235 * S, deg);
         return (
           <line
             key={`tick${i}`}
@@ -153,12 +158,12 @@ function Sunrise(W: number, H: number) {
             y2={r2(b.y)}
             stroke={C.ink}
             strokeOpacity={0.3}
-            strokeWidth={1.5}
+            strokeWidth={sw * 0.7}
           />
         );
       })}
       {/* the sun, sitting on the horizon (rising) */}
-      <circle cx={cx} cy={horizon} r={sunR} fill="url(#bh-sun)" />
+      <circle cx={cx} cy={r2(horizon)} r={r2(sunR)} fill="url(#bh-sun)" />
     </g>
   );
 }
@@ -168,89 +173,99 @@ function Sunrise(W: number, H: number) {
 function MoatMotif(W: number, H: number) {
   const cx = W / 2;
   const cy = H / 2;
-  const keep = 38;
+  const S = Math.min(W, H);
+  const keep = 0.094 * S;
+  const sw = 0.0032 * S;
+  const bridge = 0.38 * S;
+  const half = 0.024 * S;
   return (
     <g>
       {/* the moat (single muted cool accent) */}
       <circle
         cx={cx}
         cy={cy}
-        r={114}
+        r={r2(0.285 * S)}
         fill="none"
         stroke={C.water}
         strokeOpacity={0.3}
-        strokeWidth={26}
+        strokeWidth={0.066 * S}
       />
       {/* defensive walls */}
-      {[84, 128, 172].map((r, i) => (
+      {[0.21, 0.32, 0.43].map((f, i) => (
         <circle
           key={`wall${i}`}
           cx={cx}
           cy={cy}
-          r={r}
+          r={r2(f * S)}
           fill="none"
           stroke={C.ink}
           strokeOpacity={0.3}
-          strokeWidth={1.25}
+          strokeWidth={sw}
         />
       ))}
       {/* bridge across the moat to the right */}
-      <rect x={cx} y={cy - 9} width={150} height={18} fill={C.sand} />
-      <line x1={cx} y1={cy - 9} x2={cx + 150} y2={cy - 9} stroke={C.ink} strokeOpacity={0.3} strokeWidth={1.1} />
-      <line x1={cx} y1={cy + 9} x2={cx + 150} y2={cy + 9} stroke={C.ink} strokeOpacity={0.3} strokeWidth={1.1} />
+      <rect x={cx} y={r2(cy - half)} width={r2(bridge)} height={r2(half * 2)} fill={C.sand} />
+      <line x1={cx} y1={r2(cy - half)} x2={r2(cx + bridge)} y2={r2(cy - half)} stroke={C.ink} strokeOpacity={0.3} strokeWidth={sw * 0.9} />
+      <line x1={cx} y1={r2(cy + half)} x2={r2(cx + bridge)} y2={r2(cy + half)} stroke={C.ink} strokeOpacity={0.3} strokeWidth={sw * 0.9} />
       {/* the keep */}
-      <rect x={cx - keep} y={cy - keep} width={keep * 2} height={keep * 2} rx={10} fill={C.clay} />
-      <rect x={cx - keep + 14} y={cy - keep + 14} width={keep * 2 - 28} height={keep * 2 - 28} rx={6} fill="none" stroke={C.bg} strokeOpacity={0.5} strokeWidth={1.5} />
+      <rect x={r2(cx - keep)} y={r2(cy - keep)} width={r2(keep * 2)} height={r2(keep * 2)} rx={r2(0.026 * S)} fill={C.clay} />
+      <rect x={r2(cx - keep + 0.035 * S)} y={r2(cy - keep + 0.035 * S)} width={r2(keep * 2 - 0.07 * S)} height={r2(keep * 2 - 0.07 * S)} rx={r2(0.016 * S)} fill="none" stroke={C.bg} strokeOpacity={0.5} strokeWidth={sw} />
     </g>
   );
 }
 
 // Generic-but-pretty fallback: soft horizontal strata (layered landscape).
 function Strata(W: number, H: number) {
-  const left = W * 0.12;
-  const right = W * 0.88;
+  const cx = W / 2;
+  const cy = H / 2;
+  const S = Math.min(W, H);
+  const left = W * 0.1;
+  const right = W * 0.9;
+  const bandH = 0.13 * S;
   const bands = [
-    { y: H * 0.42, fill: C.sand, op: 0.9 },
-    { y: H * 0.55, fill: C.gold, op: 0.85 },
-    { y: H * 0.68, fill: C.clay, op: 0.9 },
-    { y: H * 0.81, fill: C.rust, op: 0.85 },
+    { off: -0.26, fill: C.sand, op: 0.9 },
+    { off: -0.1, fill: C.gold, op: 0.85 },
+    { off: 0.06, fill: C.clay, op: 0.9 },
+    { off: 0.22, fill: C.rust, op: 0.85 },
   ];
   return (
     <g>
       {bands.map((b, i) => (
         <rect
           key={i}
-          x={left}
-          y={b.y}
-          width={right - left}
-          height={H * 0.085}
-          rx={H * 0.0425}
+          x={r2(left)}
+          y={r2(cy + b.off * S)}
+          width={r2(right - left)}
+          height={r2(bandH)}
+          rx={r2(bandH / 2)}
           fill={b.fill}
           fillOpacity={b.op}
         />
       ))}
-      <circle cx={W * 0.72} cy={H * 0.3} r={26} fill={C.clay} />
+      <circle cx={r2(cx + 0.26 * S)} cy={r2(cy - 0.36 * S)} r={r2(0.07 * S)} fill={C.clay} />
     </g>
   );
 }
 
 // Generic-but-pretty fallback: overlapping translucent discs.
 function Venn(W: number, H: number) {
+  const cx = W / 2;
   const cy = H / 2;
-  const r = 92;
+  const S = Math.min(W, H);
+  const r = 0.28 * S;
   const discs = [
-    { cx: W / 2 - 64, fill: C.clay },
-    { cx: W / 2 + 64, fill: C.gold },
-    { cx: W / 2, cyOff: -52, fill: C.rust },
+    { dx: -0.14, dy: 0.08, fill: C.clay },
+    { dx: 0.14, dy: 0.08, fill: C.gold },
+    { dx: 0, dy: -0.11, fill: C.rust },
   ];
   return (
     <g style={{ mixBlendMode: "multiply" }}>
       {discs.map((d, i) => (
         <circle
           key={i}
-          cx={d.cx}
-          cy={cy + (d.cyOff ?? 28)}
-          r={r}
+          cx={r2(cx + d.dx * S)}
+          cy={r2(cy + d.dy * S)}
+          r={r2(r)}
           fill={d.fill}
           fillOpacity={0.62}
         />

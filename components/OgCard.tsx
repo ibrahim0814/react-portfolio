@@ -29,21 +29,21 @@ export default function OgCard({
         height: 630,
         display: "flex",
         alignItems: "center",
-        gap: 60,
-        padding: "0 84px",
+        gap: 56,
+        padding: "0 80px",
         boxSizing: "border-box",
         background: "#F0EADE",
         fontFamily:
           "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
       }}
     >
-      <div style={{ flex: "0 0 470px" }}>
+      <div style={{ flex: "0 0 480px" }}>
         <BlogHeader
           seed={seed}
           title={title}
-          ratio={470 / 430}
-          rounded={26}
-          style={{ width: 470 }}
+          ratio={1}
+          rounded={28}
+          style={{ width: 480 }}
         />
       </div>
 
@@ -52,15 +52,15 @@ export default function OgCard({
           flex: 1,
           display: "flex",
           flexDirection: "column",
-          height: 430,
+          height: 480,
           justifyContent: "center",
         }}
       >
         <div
           style={{
             textTransform: "uppercase",
-            letterSpacing: "0.18em",
-            fontSize: 19,
+            letterSpacing: "0.16em",
+            fontSize: 25,
             fontWeight: 600,
             color: "#A23C24",
           }}
@@ -69,23 +69,23 @@ export default function OgCard({
         </div>
         <h1
           style={{
-            margin: "20px 0 0",
-            fontSize: 52,
-            lineHeight: 1.12,
+            margin: "22px 0 0",
+            fontSize: 60,
+            lineHeight: 1.08,
             fontWeight: 700,
             color: "#26221E",
-            letterSpacing: "-0.01em",
+            letterSpacing: "-0.015em",
           }}
         >
           {title}
         </h1>
-        <div style={{ marginTop: 26, fontSize: 23, color: "#6B5D50" }}>
+        <div style={{ marginTop: 28, fontSize: 30, color: "#6B5D50" }}>
           {subtitle}
         </div>
         <div
           style={{
             marginTop: "auto",
-            fontSize: 19,
+            fontSize: 22,
             letterSpacing: "0.04em",
             color: "#9A8B7C",
           }}
