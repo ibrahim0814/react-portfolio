@@ -316,6 +316,9 @@ export type BlogHeaderProps = {
   rounded?: number;
   /** Film-grain overlay. Default true. */
   grain?: boolean;
+  /** Render only the emblem on a transparent canvas - no background tile,
+   *  dot grid, grain, or border. Used for the social share cards. */
+  bare?: boolean;
   className?: string;
   style?: React.CSSProperties;
 };
@@ -327,6 +330,7 @@ export default function BlogHeader({
   ratio = 16 / 6,
   rounded = 18,
   grain = true,
+  bare = false,
   className,
   style,
 }: BlogHeaderProps) {
@@ -369,7 +373,7 @@ export default function BlogHeader({
         >
           <circle cx="2" cy="2" r="1.1" fill={C.ink} fillOpacity={0.05} />
         </pattern>
-        {grain && (
+        {grain && !bare && (
           <filter id={`${idP}-grain`}>
             <feTurbulence
               type="fractalNoise"
@@ -386,35 +390,40 @@ export default function BlogHeader({
         )}
       </defs>
 
-      <g clipPath={`url(#${idP}-clip)`}>
-        <rect x="0" y="0" width={W} height={H} fill="url(#bh-bg)" />
-        <rect x="0" y="0" width={W} height={H} fill="url(#bh-dots)" />
+      {bare ? (
+        // Just the emblem, on a transparent canvas (share cards).
+        <g>{MOTIFS[motifName](W, H)}</g>
+      ) : (
+        <g clipPath={`url(#${idP}-clip)`}>
+          <rect x="0" y="0" width={W} height={H} fill="url(#bh-bg)" />
+          <rect x="0" y="0" width={W} height={H} fill="url(#bh-dots)" />
 
-        {MOTIFS[motifName](W, H)}
+          {MOTIFS[motifName](W, H)}
 
-        {grain && (
+          {grain && (
+            <rect
+              x="0"
+              y="0"
+              width={W}
+              height={H}
+              filter={`url(#${idP}-grain)`}
+              opacity={0.05}
+              style={{ mixBlendMode: "multiply" }}
+            />
+          )}
           <rect
-            x="0"
-            y="0"
-            width={W}
-            height={H}
-            filter={`url(#${idP}-grain)`}
-            opacity={0.05}
-            style={{ mixBlendMode: "multiply" }}
+            x="0.5"
+            y="0.5"
+            width={W - 1}
+            height={H - 1}
+            fill="none"
+            stroke={C.ink}
+            strokeOpacity={0.1}
+            rx={rounded}
+            ry={rounded}
           />
-        )}
-        <rect
-          x="0.5"
-          y="0.5"
-          width={W - 1}
-          height={H - 1}
-          fill="none"
-          stroke={C.ink}
-          strokeOpacity={0.1}
-          rx={rounded}
-          ry={rounded}
-        />
-      </g>
+        </g>
+      )}
     </svg>
   );
 }
