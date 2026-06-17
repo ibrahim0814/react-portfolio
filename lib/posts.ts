@@ -42,7 +42,7 @@ const posts: Post[] = [
           },
           {
             heading: "Repeat until autonomous",
-            body: "Part 4 is to repeat the first three parts until your business runs semi-autonomously. My belief is that we haven't even scratched the surface of what these agents can do. Let your imagination roam free.",
+            body: "Repeat until autonomous.",
           },
         ],
       },
