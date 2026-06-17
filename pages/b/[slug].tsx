@@ -16,7 +16,8 @@ export default function BlogPost({ post }: Props) {
   return (
     <div className="min-h-screen bg-[#242424] text-white">
       <Head>
-        <title>{`${post.title} — Ibrahim Ali (Darugar)`}</title>
+        <title>{post.title}</title>
+        <meta property="og:site_name" content="Ibrahim Ali" />
         <meta name="description" content={post.excerpt} />
         <meta property="og:type" content="article" />
         <meta property="og:title" content={post.title} />
