@@ -1,6 +1,8 @@
 import Head from "next/head";
 import Link from "next/link";
 import { GetStaticPaths, GetStaticProps } from "next";
+import BlogHeader from "../../components/BlogHeader";
+import { SITE_URL, ogImage } from "../../lib/site";
 import {
   getAllPosts,
   getPostBySlug,
@@ -16,6 +18,18 @@ export default function BlogPost({ post }: Props) {
       <Head>
         <title>{`${post.title} — Ibrahim Ali (Darugar)`}</title>
         <meta name="description" content={post.excerpt} />
+        <meta property="og:type" content="article" />
+        <meta property="og:title" content={post.title} />
+        <meta property="og:description" content={post.excerpt} />
+        <meta property="og:url" content={`${SITE_URL}/b/${post.slug}`} />
+        <meta property="og:image" content={ogImage(post.slug)} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="article:published_time" content={post.date} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.excerpt} />
+        <meta name="twitter:image" content={ogImage(post.slug)} />
       </Head>
 
       <main className="mx-auto max-w-2xl px-6 py-20">
@@ -25,6 +39,13 @@ export default function BlogPost({ post }: Props) {
         >
           ← Blog
         </Link>
+
+        <BlogHeader
+          seed={post.slug}
+          title={post.title}
+          ratio={16 / 6}
+          className="mt-10 overflow-hidden rounded-2xl ring-1 ring-white/5"
+        />
 
         <article className="mt-10">
           <p className="text-sm uppercase tracking-widest text-gray-500">

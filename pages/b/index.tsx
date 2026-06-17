@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import { getAllPosts, formatDate, Post } from "../../lib/posts";
+import { SITE_URL, ogImage } from "../../lib/site";
 
 type Props = { posts: Post[] };
 
@@ -9,10 +10,24 @@ export default function Blog({ posts }: Props) {
     <div className="min-h-screen bg-[#242424] text-white">
       <Head>
         <title>{`Blog — Ibrahim Ali (Darugar)`}</title>
+        <meta name="description" content="Writing by Ibrahim Ali (Darugar)." />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Blog — Ibrahim Ali" />
         <meta
-          name="description"
+          property="og:description"
           content="Writing by Ibrahim Ali (Darugar)."
         />
+        <meta property="og:url" content={`${SITE_URL}/b`} />
+        <meta property="og:image" content={ogImage()} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Blog — Ibrahim Ali" />
+        <meta
+          name="twitter:description"
+          content="Writing by Ibrahim Ali (Darugar)."
+        />
+        <meta name="twitter:image" content={ogImage()} />
       </Head>
 
       <main className="mx-auto max-w-2xl px-6 py-20">
