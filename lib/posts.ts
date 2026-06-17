@@ -41,8 +41,8 @@ const posts: Post[] = [
             body: "Part 3 is encoding processes so that agents can execute rote tasks end to end. The simplest example of this is on-call rotations and investigations. You probably want information about investigations displayed in a certain way. Great! Write this down in a place where agents have easy access to it. This could be a skill or a document — it doesn't matter. Every layer of a business can be augmented by high-level intelligence and reasoning in some way.",
           },
           {
-            heading: "Repeat until autonomous",
-            body: "Repeat until autonomous.",
+            heading: "Repeat",
+            body: "Part 4 is to repeat the first three parts until your business runs semi-autonomously. My belief is that we haven't even scratched the surface of what these agents can do. Let your imagination roam free.",
           },
         ],
       },
