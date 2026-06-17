@@ -15,6 +15,56 @@ export type Post = {
 
 const posts: Post[] = [
   {
+    slug: "agent-native-company",
+    title: "The agent native company",
+    date: "2026-06-16",
+    excerpt:
+      "If I started a company in 2026, my first task would be making it the most agent-native company possible. Here's what that actually means.",
+    content: [
+      {
+        type: "p",
+        text: "If I had the privilege of starting a company in 2026, especially anything in tech, my first task would be to really think about how I could make it the most agent-native company. But what does this actually mean? Let's break it down.",
+      },
+      {
+        type: "ol",
+        items: [
+          {
+            heading: "The code",
+            body: "The first part is (sort of) easy. Every engineer should be using agents to write their code. Every PR should be reviewed by coding agents. Every principle behind how you write code needs to be documented in an AGENTS.md file. Every rule you want to check PRs against should be written in a BUGBOT.md file. Pick whatever provider you'd like for these, that's up to you. But if you're not writing code with agents, you're running the race with one hand tied behind your back.",
+          },
+          {
+            heading: "Every vendor",
+            body: "The second part is extending the basic philosophy of Part 1 to every vendor the company uses. Any choice for new vendors should be affected by whether or not they have an API or CLI. Get rid of them if they don't. This isn't always possible with a must-have vendor, but what you're trying to guard against is being invisible to agents. Agents need as much context as possible, so providing them the API keys or any meaningful level of visibility into your stack is an absolute must. Give your agents access to Slack, Sentry, Linear, Google Drive, AWS, GitHub — do it all. This allows agents to make connections and reason across (historically) disparate silos of information across the company. This is a hidden superpower anyone can uncover with some basic plumbing.",
+          },
+          {
+            heading: "Encoded processes",
+            body: "Part 3 is encoding processes so that agents can execute rote tasks end to end. The simplest example of this is on-call rotations and investigations. You probably want information about investigations displayed in a certain way. Great! Write this down in a place where agents have easy access to it. This could be a skill or a document — it doesn't matter. Every layer of a business can be augmented by high-level intelligence and reasoning in some way.",
+          },
+          {
+            heading: "Repeat until autonomous",
+            body: "Part 4 is to repeat the first three parts until your business runs semi-autonomously. My belief is that we haven't even scratched the surface of what these agents can do. Let your imagination roam free.",
+          },
+        ],
+      },
+      {
+        type: "p",
+        text: "In my ideal world, all the tools that I use in my business are interconnected. I'm not left looking at 100+ @ mentions across Slack, Google Drive, and Linear trying to piece together a story of what's happening and what needs my attention today. My agents have done 80-90% of the work ahead of time. I'm only reviewing, making high-stakes, high-level decisions, or getting my hands dirty on tasks that are human-centric.",
+      },
+      {
+        type: "p",
+        text: "My agents track projects in Notion and Linear, keep tabs on activity within Slack (and are available to help me get tasks done), and my inbox is already managed and triaged before I wake up. My agents join meeting calls, transcribe them, automatically create tickets for things that require human input, create PRs for things that can be fixed immediately, and offer real-time advice when called upon in meetings, just like co-workers can (GPT Realtime, anyone?).",
+      },
+      {
+        type: "p",
+        text: "This isn't just some pipe dream though. This can be reality today.",
+      },
+      {
+        type: "p",
+        text: "The broader point here is that whenever you're thinking about your business from the perspective of agent integration, all the pieces you're using to build it should be accessible to agents. Context is the most important thing your agent can have. If it doesn't have proper context along every step of the work you're asking it to perform, it will fail. Open your business up to agents (both internally and externally) and see the magic that ensues.",
+      },
+    ],
+  },
+  {
     slug: "optimism",
     title: "No one (really) knows anything",
     date: "2026-06-15",
