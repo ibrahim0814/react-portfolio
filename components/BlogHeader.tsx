@@ -14,7 +14,7 @@
 
 import { useMemo } from "react";
 
-type Motif = "orbit" | "sunrise" | "moat" | "strata" | "venn";
+type Motif = "orbit" | "sunrise" | "moat" | "strata" | "venn" | "constellation";
 
 /* --------------------------------- palette --------------------------------- */
 const C = {
@@ -274,12 +274,78 @@ function Venn(W: number, H: number) {
   );
 }
 
+// "Life boils down to a few seconds" -> a constellation: a few bright points
+// scattered through mostly empty space, the rare moments worth keeping. One
+// gold focal "second" haloed at the heart, a few faint links between them.
+function Constellation(W: number, H: number) {
+  const cx = W / 2;
+  const cy = H / 2;
+  const S = Math.min(W, H);
+  const sw = 0.0032 * S;
+  // hand-placed stars (polar from center so they fill any aspect ratio)
+  const stars = [
+    { rF: 0.07, deg: 210, sizeF: 0.05, fill: C.gold }, // 0: focal "second"
+    { rF: 0.3, deg: 132, sizeF: 0.024, fill: C.clay }, // 1
+    { rF: 0.4, deg: 308, sizeF: 0.02, fill: C.rust }, // 2
+    { rF: 0.26, deg: 256, sizeF: 0.016, fill: C.sand }, // 3
+    { rF: 0.36, deg: 22, sizeF: 0.018, fill: C.clay }, // 4
+    { rF: 0.4, deg: 70, sizeF: 0.012, fill: C.sand }, // 5
+    { rF: 0.18, deg: 92, sizeF: 0.012, fill: C.gold }, // 6
+    { rF: 0.38, deg: 178, sizeF: 0.011, fill: C.sand }, // 7
+  ];
+  const pts = stars.map((s) => polar(cx, cy, s.rF * S, s.deg));
+  const links: [number, number][] = [
+    [0, 1],
+    [1, 7],
+    [0, 3],
+    [0, 4],
+    [4, 5],
+    [0, 2],
+  ];
+  return (
+    <g>
+      {links.map(([a, b], i) => (
+        <line
+          key={`link${i}`}
+          x1={r2(pts[a].x)}
+          y1={r2(pts[a].y)}
+          x2={r2(pts[b].x)}
+          y2={r2(pts[b].y)}
+          stroke={C.ink}
+          strokeOpacity={0.18}
+          strokeWidth={sw * 0.8}
+        />
+      ))}
+      {/* faint halo around the focal second */}
+      <circle
+        cx={r2(pts[0].x)}
+        cy={r2(pts[0].y)}
+        r={r2(0.092 * S)}
+        fill="none"
+        stroke={C.gold}
+        strokeOpacity={0.4}
+        strokeWidth={sw}
+      />
+      {stars.map((s, i) => (
+        <circle
+          key={`star${i}`}
+          cx={r2(pts[i].x)}
+          cy={r2(pts[i].y)}
+          r={r2(s.sizeF * S)}
+          fill={s.fill}
+        />
+      ))}
+    </g>
+  );
+}
+
 const MOTIFS: Record<Motif, (W: number, H: number) => JSX.Element> = {
   orbit: Orbit,
   sunrise: Sunrise,
   moat: MoatMotif,
   strata: Strata,
   venn: Venn,
+  constellation: Constellation,
 };
 
 // Designed assignment for known posts; everything else falls back by hash so a
@@ -288,9 +354,10 @@ const SLUG_MOTIF: Record<string, Motif> = {
   "agent-native": "orbit",
   optimism: "sunrise",
   moats: "moat",
+  seconds: "constellation",
 };
 
-const FALLBACK_ORDER: Motif[] = ["orbit", "venn", "strata", "moat", "sunrise"];
+const FALLBACK_ORDER: Motif[] = ["orbit", "venn", "strata", "moat", "sunrise", "constellation"];
 
 function hashSeed(str = ""): number {
   let h = 0x811c9dc5;

@@ -15,6 +15,35 @@ export type Post = {
 
 const posts: Post[] = [
   {
+    slug: "seconds",
+    title: "Life boils down to a few seconds",
+    date: "2026-06-18",
+    excerpt:
+      "Most of life is empty space. The whole point is to collect the few seconds that aren't.",
+    content: [
+      { type: "p", text: "Life boils down to a few seconds." },
+      { type: "p", text: "LeBron's block on Iguodala." },
+      { type: "p", text: "Tiger's par on Hole 18 to win his fifth Masters (and his hug with his son)." },
+      { type: "p", text: "The tip by Anunoby." },
+      { type: "p", text: "The game-winner by Kawhi." },
+      { type: "p", text: "Kobe's 60th point in his last game." },
+      { type: "p", text: "The 3 pointer by Steph at the Olympics." },
+      { type: "p", text: "The final lap between Verstappen and Hamilton at Abu Dhabi 2021." },
+      {
+        type: "p",
+        text: "I know these are all examples from the sports world, but I'm using them to illustrate my point: life can be compressed into a few seconds. The vast majority of life is like the emptiness of space, devoid of everything. What did you eat this morning? What did you do last week? Do you even remember? Neither do I.",
+      },
+      {
+        type: "p",
+        text: "However, in between the vast emptiness of life, there are a few special moments. Getting the keys to your first car or house. The moment you decided to go to an amusement park on a random Saturday and the rollercoaster almost broke your neck. That time you went to a Lakers game and it went into overtime. Man, it brings a smile to your face, doesn't it?",
+      },
+      {
+        type: "p",
+        text: "My goal in life is to collect and cultivate these moments. As many of them as I can.",
+      },
+    ],
+  },
+  {
     slug: "agent-native",
     title: "The agent native company",
     date: "2026-06-16",
