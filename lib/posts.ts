@@ -21,7 +21,6 @@ const posts: Post[] = [
     excerpt:
       "Most of life is empty space. The whole point is to collect the few seconds that aren't.",
     content: [
-      { type: "p", text: "Life boils down to a few seconds." },
       { type: "p", text: "LeBron's block on Iguodala." },
       { type: "p", text: "Tiger's par on Hole 18 to win his fifth Masters (and his hug with his son)." },
       { type: "p", text: "The tip by Anunoby." },
